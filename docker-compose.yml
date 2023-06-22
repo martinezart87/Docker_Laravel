@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: ${CONTAINER_NAME_APP}
+    restart: always
+    working_dir: /var/www/
+    volumes:
+      - /srv/www/${DIR_NAME}:/var/www
+  nginx:
+    image: nginx:1.24-alpine
+    container_name: ${CONTAINER_NAME_NGINX}
+    restart: always
+    ports:
+      - ${PORT}:80
+    volumes:
+      - /srv/www/${DIR_NAME}:/var/www
+      - ./nginx:/etc/nginx/conf.d
+networks:
+  ${NETWORK_NAME}:
+    external: true
