@@ -1,4 +1,4 @@
-* * * * * /usr/bin/php /var/www/artisan schedule:run >> /var/log/cron.log 2>&1
+* * * * * /usr/local/bin/php /var/www/artisan schedule:run >> /var/log/cron.log 2>&1
 # * * * * * cd /var/www && php artisan schedule:run >> /dev/null 2>&1
 # * * * * * echo "Hello world" >> /var/log/cron.log 2>&1
 # Don't remove the empty line at the end of this file. It is required to run the cron job
