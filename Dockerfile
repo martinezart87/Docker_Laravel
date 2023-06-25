@@ -31,6 +31,11 @@ COPY crontab /etc/cron.d/app-cron
 RUN chmod 0644 /etc/cron.d/app-cron
 # Apply cron job
 RUN crontab /etc/cron.d/app-cron
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+
+# Run the command on container startup
+# CMD cron && tail -f /var/log/cron.log
 
 # Install PHP modules
 RUN docker-php-ext-install zip
