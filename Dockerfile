@@ -57,6 +57,7 @@ RUN docker-php-ext-install bcmath
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 # MSSQL SERVER CONNECTION
+#PHP 7.4 - ZMIENIĆ NA pecl install sqlsrv-5.10.1 pdo_sqlsrv-5.10.1
 RUN apt-get update && apt-get install -y \
     unixodbc-dev \
     && pecl install sqlsrv pdo_sqlsrv \
