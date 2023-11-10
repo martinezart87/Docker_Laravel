@@ -24,7 +24,8 @@ RUN apt-get update && apt-get install -y \
         libbz2-dev \
         libzip-dev \
         gnupg gnupg2 gnupg1 \
-	    cron
+	cron \
+ 	mc
 
 # Copy hello-cron file to the cron.d directory
 COPY crontab /etc/cron.d/app-cron
