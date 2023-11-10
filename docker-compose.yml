@@ -12,8 +12,6 @@ services:
     working_dir: /var/www/
     volumes:
       - /srv/www/${APP_NAME}:/var/www
-      - /srv/www/ai/data:/var/ai/data
-      - /srv/www/ai/data/csv:/var/ai/data/csv
 
   nginx:
     image: nginx:1.24-alpine
