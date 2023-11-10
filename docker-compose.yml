@@ -5,20 +5,28 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name: ${CONTAINER_NAME_APP}
+      args:
+        - PHP_V=${PHP_V}
+    container_name: app-${APP_NAME}
     restart: always
     working_dir: /var/www/
     volumes:
-      - /srv/www/${DIR_NAME}:/var/www
+      - /srv/www/${APP_NAME}:/var/www
+      - /srv/www/ai/data:/var/ai/data
+      - /srv/www/ai/data/csv:/var/ai/data/csv
+
   nginx:
     image: nginx:1.24-alpine
-    container_name: ${CONTAINER_NAME_NGINX}
+    container_name: nginx-${APP_NAME}
     restart: always
     ports:
       - ${PORT}:80
     volumes:
-      - /srv/www/${DIR_NAME}:/var/www
+      - /srv/www/${APP_NAME}:/var/www
       - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - app
+
 networks:
-  ${NETWORK_NAME}:
+  network-${APP_NAME}:
     external: true

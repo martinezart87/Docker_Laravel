@@ -1,4 +1,5 @@
-FROM php:8.2.5-fpm
+ARG PHP_V
+FROM php:${PHP_V}-fpm
 
 # Update packages and install basic things
 RUN apt-get update && apt-get install -y \
@@ -23,7 +24,7 @@ RUN apt-get update && apt-get install -y \
         libbz2-dev \
         libzip-dev \
         gnupg gnupg2 gnupg1 \
-	cron
+	    cron
 
 # Copy hello-cron file to the cron.d directory
 COPY crontab /etc/cron.d/app-cron
@@ -33,6 +34,8 @@ RUN chmod 0644 /etc/cron.d/app-cron
 RUN crontab /etc/cron.d/app-cron
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
+
+RUN cron
 
 # Run the command on container startup
 # CMD cron && tail -f /var/log/cron.log
