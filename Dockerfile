@@ -1,6 +1,8 @@
 ARG PHP_V
 FROM php:${PHP_V}-fpm
 
+ADD ./php/php.ini /usr/local/etc/php/php.ini
+
 # Update packages and install basic things
 RUN apt-get update && apt-get install -y \
         sudo \
