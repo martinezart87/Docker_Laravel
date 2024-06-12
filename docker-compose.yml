@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
       args:
         - PHP_V=${PHP_V}
+        - GIT_CLONE=${GIT_CLONE}
+        - NODE_VERSION=${NODE_VERSION}
     container_name: app-${APP_NAME}
     restart: always
     working_dir: /var/www/
