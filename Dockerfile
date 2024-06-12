@@ -105,7 +105,4 @@ RUN chmod 600 /www-data/.ssh/id_rsa
 RUN ssh-keyscan github.com >> /www-data/.ssh/known_hosts
 ENV GIT_SSH_COMMAND="ssh -i /www-data/.ssh/id_rsa -o UserKnownHostsFile=/www-data/.ssh/known_hosts"
 
-RUN bash /usr/local/bin/init/init.sh
-
-CMD ["bash"]
-# CMD ["bash", "-c", "/usr/local/bin/init/init.sh"]
+CMD ["bash", "-c", "/usr/local/bin/init/init.sh"]
