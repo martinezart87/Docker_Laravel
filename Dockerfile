@@ -76,6 +76,7 @@ RUN apt-get update && ACCEPT_EULA=Y apt-get install -y \
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 ADD ./php/php.ini /usr/local/etc/php/php.ini
+ADD ./supervisor/php-fpm.conf /etc/supervisor/conf.d/php-fpm.conf
 #ADD ./supervisor/laravel-app-start.conf /etc/supervisor/conf.d/laravel-app-start.conf
 ADD ./supervisor/laravel-npm-dev.conf /etc/supervisor/conf.d/laravel-npm-dev.conf
 ADD ./supervisor/laravel-reverb-start.conf /etc/supervisor/conf.d/laravel-reverb-start.conf

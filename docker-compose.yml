@@ -21,6 +21,8 @@ services:
     restart: always
     ports:
       - ${PORT}:80
+      - 8080:8080
+      - 5173:5173
     volumes:
       - /srv/www/${APP_NAME}:/var/www
       - ./nginx:/etc/nginx/conf.d
