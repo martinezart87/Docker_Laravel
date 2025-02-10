@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.bashrc
+# php-fpm -D
 echo "Przygotowanie aplikacji..."
 
 if [ -z "$(ls -A /var/www)" ]; then
@@ -22,6 +24,15 @@ sudo service supervisor start
 sudo supervisorctl reread
 sudo supervisorctl update
 sudo supervisorctl reload
+
+echo "Proszę czekać. Wykonuję npm install.... "
+cd /var/www && chmod -R 777 storage
+cd /var/www && chmod -R 777 bootstrap/cache
+chown -R root:root /var/www
+
+echo "Synchronizuję czas..."
+echo "server tempus1.gum.gov.pl iburst" >> /etc/chrony/chrony.conf
+chronyd -d &
 
 echo "Zakończono instalację"
 
