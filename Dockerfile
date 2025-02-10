@@ -30,7 +30,8 @@ RUN apt-get update && apt-get install -y \
         cron \
         mc \
         supervisor \
-        mlocate
+        mlocate \
+        chrony
 
 RUN updatedb
 
