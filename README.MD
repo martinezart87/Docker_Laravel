@@ -1,5 +1,11 @@
 # Docker PHP|Laravel
 
+##
+chrony sprawdzenie aktualnego czasu:
+```
+chronyc sources
+```
+
 ## Konfiguracja GIT - SSH
 
 Generowanie klucza ssh dla githuba:
